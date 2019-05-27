@@ -13,6 +13,7 @@
 @include('layouts.footer')
 
 <!-- Latest jQuery form server -->
+<script type="text/javascript" src="{{asset('js/jquery.js')}}"></script>
 <script src="https://code.jquery.com/jquery.min.js"></script>
 
 <!-- Bootstrap JS form CDN -->

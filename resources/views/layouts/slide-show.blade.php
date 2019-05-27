@@ -33,7 +33,7 @@
             <li><img src="img/h4-slide4.png" alt="Slide">
                 <div class="caption-group">
                     <h2 class="caption title">
-                        Apple <span class="primary">Store <strong>Ipod</strong></span>
+                        Audio <span class="primary">Book</span>
                     </h2>
                     <h4 class="caption subtitle">& Phone</h4>
                     <a class="caption button-radius" href="#"><span class="icon"></span>Shop now</a>

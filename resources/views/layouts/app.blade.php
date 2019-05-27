@@ -5,6 +5,6 @@
 
     @include('layouts.promo')
 
-    @include('layouts.main_conrent')
+    @include('layouts.main_content')
 
 @stop

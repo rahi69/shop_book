@@ -174,7 +174,9 @@
         </div>
     </form>
 </div>
-@section('script')
+<script type="text/javascript" src="{{asset('js/jquery.js')}}"></script>
+
+{{--@section('script')--}}
     <script>
         @if(count($errors) > 0)
         $(function() {
@@ -182,9 +184,9 @@
         });
         @endif
     </script>
-@endsection
+{{--@endsection--}}
 
-{{--<script>
+<script>
     // Get the modal
     var modal = document.getElementById('id01');
 
@@ -194,7 +196,7 @@
             modal.style.display = "none";
         }
     }
-</script>--}}
+</script>
 
 
 </body>
