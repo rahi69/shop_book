@@ -176,7 +176,6 @@
 </div>
 <script type="text/javascript" src="{{asset('js/jquery.js')}}"></script>
 
-{{--@section('script')--}}
     <script>
         @if(count($errors) > 0)
         $(function() {
@@ -184,7 +183,6 @@
         });
         @endif
     </script>
-{{--@endsection--}}
 
 <script>
     // Get the modal

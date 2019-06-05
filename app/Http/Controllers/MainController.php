@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 use App\Book;
 
+use App\Category;
+use App\Favorite;
+use App\Rating;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MainController extends Controller
 {
@@ -12,6 +16,14 @@ class MainController extends Controller
      */
     public function index()
     {
+
+        $nodes = Category::where('parent_id',2)->get();
+
+        $books = Book::all();
+
+        $ratings = Rating ::select('book_id', DB::raw('AVG(book_id) as average'))
+            ->groupBy('book_id')
+            ->orderBy('average', 'desc')->limit(20)->get();
 
         $child_books=Book::where('category_id',3)
             ->limit(20)->get();
@@ -34,13 +46,10 @@ class MainController extends Controller
         $psychology_books=Book::where('category_id',9)
             ->paginate(6);
 
+////        return response()->json($child_books);
 
         $upload='http://localhost';
-
-//        return response()->json($child_books);
-
-        return view('layouts.app',compact('child_books','novel_books','psychology_books','poetry_books','scientific_books','history_books','mystery_books','upload'));
-//        return view('layouts.app',compact('child_books','novel_books','upload'));
+        return view('layouts.app',compact('nodes','books','ratings','child_books','novel_books','psychology_books','poetry_books','scientific_books','history_books','mystery_books','upload'));
     }
 
     public function show($id)
@@ -49,6 +58,5 @@ class MainController extends Controller
         $upload='http://localhost';
 
         return view('layouts.detail',compact('book','upload'));
-//        return view('t',compact('book','upload'));
     }
 }

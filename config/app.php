@@ -161,6 +161,10 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Baum\Providers\BaumServiceProvider::class,
+
+
+
 
         /*
          * Package Service Providers...

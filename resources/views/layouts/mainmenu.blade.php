@@ -16,7 +16,14 @@
                     <li><a href="single-product.html">Single product</a></li>
                     <li><a href="cart.html">Cart</a></li>
                     <li><a href="checkout.html">Checkout</a></li>
-                    <li><a href="#">Category</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Category<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            @foreach($nodes as $node)
+                                <li><a href="#">{{$node->name}}</a></li>
+                            @endforeach
+                        </ul>
+                    </li>
                     <li><a href="#">Others</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
