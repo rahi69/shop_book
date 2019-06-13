@@ -15,8 +15,14 @@
 //    return view('layouts/app');
 //});
 
+Route::get('register','Auth\RegisterController@showRegistrationForm');
 Auth::routes();
 
 Route::get('/', 'MainController@index');
+
 Route::get('/book/{id}', 'MainController@show');
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('logout','Auth\LoginController@logout');
+

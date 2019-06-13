@@ -1,3 +1,4 @@
+
 <div class="header-area">
     <div class="container">
         <div class="row">
@@ -8,7 +9,11 @@
                         <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
                         <li><a href="cart.html"><i class="fa fa-user"></i> My Cart</a></li>
                         <li><a href="checkout.html"><i class="fa fa-user"></i> Checkout</a></li>
-                        <li><a href="#"><i class="fa fa-user"></i> Login</a></li>
+                        @if(!Auth::check())
+                        <li><a type="button" class="btn btn-default btn-lg" id="myBtn"><i class="fa fa-user"></i> Login</a></li>
+                        @else
+                            <li><a type="button" href="{{url('logout')}}" style="text-decoration: none" class="btn btn-default  btn-lg" > <i class="fa fa-user">Logout</i></a></li>
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -39,3 +44,158 @@
         </div>
     </div>
 </div> <!-- End header area -->
+
+<div class="container">
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog ">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" style="padding:35px 50px;">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4>Sign In / Register</h4>
+                </div>
+                <div class="modal-body" style="padding:60px 60px;">
+                    <form role="form" action="{{ route('login') }}" method="post">
+                        {{ csrf_field() }}
+
+                        @if ($errors->has('error_login'))
+                            <span style="color:red; background-color: #ffc0dc;font-size:16px;padding-right:10px;" class="help-block">
+                                     {{ $errors->first('error_login') }}
+                            </span>
+                        @endif
+
+                        <div class="form-group">
+                            <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Enter email">
+                            @if ($errors->has('email'))
+
+                                <span class="invalid-feedback" style="color: red" role="alert">
+                                   {{ $errors->first('email') }}
+                                </span>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                            <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password"  placeholder="Enter password">
+                            @if ($errors->has('password'))
+
+                                <span class="invalid-feedback" style="color:red;" role="alert">
+                                   {{ $errors->first('password') }}
+                                </span>
+                            @endif
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" name="remember" value="" checked>Remember me</label>
+                        </div>
+                        <button type="submit" id="login" class="btn btn-success btn-block " value="Login"><span class="glyphicon glyphicon-off"></span> Login</button>
+                    </form>
+                </div>
+                <div class="modal-footer ">
+                     <div class="row">
+                        <div class="col-sm-6">
+                            <p style="text-align: left">Not a member?<button type="submit" class="btn btn-danger btn-default  " style=" background-color: #ff8079;text-align: right" ><a href="{{route("register")}}" style="color: white;text-decoration: none">Sign Up</a></button></p>
+                        </div>
+                        <div class="col-sm-6">
+                             <p style="text-align:right">Forgot <a  class=" "  id="forgbtn" >Password?</a></p>
+                        </div>
+                     </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{{--/*forget pas modal*/--}}
+
+
+
+<div class="container">
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="forget" role="dialog">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header" style="padding:35px 50px;">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4>Sign In / Register</h4>
+                </div>
+                <div class="modal-body" style="padding:60px 60px;">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    <form role="form" action="{{ route('password.email')}}" method="post">
+                    {{ csrf_field() }}
+
+
+                            <div class="form-group">
+                            <label for="usrname"><span class="glyphicon glyphicon-user"></span> Email</label>
+                            <input  type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('sendmail') }}" placeholder="Enter email">
+
+                            @if ($errors->has('email'))
+                                <span class="invalid-feedback" style="color: red" role="alert">
+                                   {{ $errors->first('email') }}
+                                </span>
+                            @endif
+                        </div>
+                        <button type="submit" id="subfor"  class="btn btn-success btn-block" ><span class="glyphicon glyphicon-off"></span>submit</button>
+                    </form>
+                </div>
+        </div>
+    </div>
+  </div>
+</div>
+<script>
+
+    $(document).ready(function(){
+        $("#myBtn").click(function(){
+            $("#myModal").modal();
+
+
+        });
+
+        $("#forgbtn").click(function(){
+            $("#forget").modal();
+            $("#myModal").modal("hide");
+
+        });
+    });
+   @if(session('status'))
+   $(document).ready(function () {
+       $("#forget").modal();
+       $("#myModal").modal("hide");
+
+
+   });
+   @endif
+   @if($errors->has('email')&& !$errors->has('password') )
+
+       $(document).ready(function () {
+           $("#forget").modal();
+           $("#myModal").modal("hide");
+
+
+       });
+
+
+   @elseif(count($errors)>0 )
+
+        $(document).ready(function(){
+            $("#myModal").modal();
+            $("forget").modal('hide');
+        });
+
+   @endif
+
+
+
+
+</script>
