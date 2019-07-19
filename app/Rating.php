@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rating extends Model
 {
+
+    protected $fillable = [
+       'user_id','book_id','rate',
+    ];
     public function User()
     {
         return $this->belongsTo(User::class );

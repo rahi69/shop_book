@@ -26,7 +26,7 @@
                                     @endif
                                     <div class="product-hover">
                                         <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                        <a href="{{url('detail/'.$book->id)}}" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                     </div>
                                 </div>
 
@@ -68,7 +68,7 @@
                                     @endif
                                     <div class="product-hover">
                                         <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                        <a href="{{url('detail/'.$rating->book->id)}}" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                     </div>
                                 </div>
 
@@ -109,7 +109,7 @@
                                     @endif
                                     <div class="product-hover">
                                         <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                        <a href="{{url('detail/'.$child_book->id)}}" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                     </div>
                                 </div>
 
@@ -150,7 +150,7 @@
                                     @endif
                                     <div class="product-hover">
                                         <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                        <a href="{{url('detail/'.$novel_book->id)}}" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                     </div>
                                 </div>
 
@@ -191,7 +191,7 @@
                                     @endif
                                     <div class="product-hover">
                                         <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                        <a href="{{url('detail/'.$poetry_book->id)}}" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                     </div>
                                 </div>
 
@@ -232,7 +232,7 @@
                                     @endif
                                     <div class="product-hover">
                                         <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                        <a href="{{url('detail/'.$history_book->id)}}" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                     </div>
                                 </div>
 
@@ -273,7 +273,7 @@
                                     @endif
                                     <div class="product-hover">
                                         <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                        <a href="{{url('detail/'.$scientific_book->id)}}" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                     </div>
                                 </div>
 
@@ -314,7 +314,7 @@
                                     @endif
                                     <div class="product-hover">
                                         <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                        <a href="{{url('detail/'.$mystery_book->id)}}" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                     </div>
                                 </div>
 
@@ -355,7 +355,7 @@
                                     @endif
                                     <div class="product-hover">
                                         <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                        <a href="{{url('detail/'.$psychology_book->id)}}" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                     </div>
                                 </div>
 

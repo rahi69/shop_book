@@ -20,9 +20,9 @@ Auth::routes();
 
 Route::get('/', 'MainController@index');
 
-Route::get('/book/{id}', 'MainController@show');
+Route::get('detail/{id}', 'MainController@detail');
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::post('review/{id}','MainController@review');
 
 Route::get('logout','Auth\LoginController@logout');
 

@@ -70,21 +70,21 @@
 
                         <div class="form-group">
                             <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Enter email">
-                            @if ($errors->has('email'))
+                            <input id="email" type="email" class="form-control{{ $errors->has('login_email') ? ' is-invalid' : '' }}" name="login_email" value="{{ old('login_email') }}" placeholder="Enter email">
+                            @if ($errors->has('login_email'))
 
                                 <span class="invalid-feedback" style="color: red" role="alert">
-                                   {{ $errors->first('email') }}
+                                   {{ $errors->first('login_email') }}
                                 </span>
                             @endif
                         </div>
                         <div class="form-group">
                             <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-                            <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password"  placeholder="Enter password">
-                            @if ($errors->has('password'))
+                            <input id="password" type="password" class="form-control{{ $errors->has('login_password') ? ' is-invalid' : '' }}" name="login_password"  placeholder="Enter password">
+                            @if ($errors->has('login_password'))
 
                                 <span class="invalid-feedback" style="color:red;" role="alert">
-                                   {{ $errors->first('password') }}
+                                   {{ $errors->first('login_password') }}
                                 </span>
                             @endif
                         </div>
@@ -168,19 +168,19 @@
 
         });
     });
-   @if(session('status'))
+   @if($errors->has('email')||session('status'))
    $(document).ready(function () {
-       $("#forget").modal();
-       $("#myModal").modal("hide");
+       $("#forget").modal("show");
+      $("#myModal").modal("hide");
 
 
    });
    @endif
-   @if($errors->has('email')&& !$errors->has('password') )
+   @if($errors->has('login_email')|| $errors->has('login_password')||$errors->has('error_login') )
 
        $(document).ready(function () {
-           $("#forget").modal();
-           $("#myModal").modal("hide");
+          // $("#forget").modal();
+           $("#myModal").modal("show");
 
 
        });
